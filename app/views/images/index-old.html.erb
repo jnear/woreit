@@ -1,0 +1,34 @@
+<h1>Listing images</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><img src="<%= image.url %>"></td>
+        <td><%= link_to 'Show', image %></td>
+        <td><%= link_to 'Edit', edit_image_path(image) %></td>
+        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td><b>Tags:</b> <div class="tags<%= image.id %>"><%= image.tags.map{|x| x.name }.join(", ") %> </div>
+
+        <br><%= form_tag "images/tag", :class => "tag_form", :remote => true do %>
+          <%= hidden_field_tag "image_id", image.id %>
+          <%= text_field_tag "tag", "", :class => "text#{image.id}" %>
+          <%= submit_tag "Tag" %>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image', new_image_path %>
