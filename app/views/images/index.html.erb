@@ -18,9 +18,9 @@
         </td>
         <td><b>Tags:</b> <div class="tags<%= image.id %>"><%= render image.tags %> </div>
 
-        <br><%= form_tag "images/tag", :class => "tag_form", :remote => true do %>
+        <br><%= form_tag "tags", :class => "tag_form", :remote => true do %>
           <%= hidden_field_tag "image_id", image.id %>
-          <%= text_field_tag "tag", "", :class => "text#{image.id}" %>
+          <%= text_field_tag "name", "", :class => "text#{image.id}" %>
           <%= submit_tag "Tag", :class => "btn btn-default" %>
         <% end %>
         </td>

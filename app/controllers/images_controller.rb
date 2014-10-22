@@ -61,19 +61,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  def tag
-    @image_id = params[:image_id]
-    @image = Image.find(@image_id)
-    tag = params[:tag]
-
-    @image.tags.create(:name => tag)
- 
-    respond_to do |format|
-      format.js { render :layout => false }
-    end
-  end
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
